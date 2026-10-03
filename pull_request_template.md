@@ -9,7 +9,7 @@ Closes #
 
 ## Summary
 
-<!-- One sentence: what this PR changes, for the user or the repo. -->
+<!-- What this PR changes and why, for the user or the repo, in as few sentences as it takes. -->
 
 ## Type of Change
 
