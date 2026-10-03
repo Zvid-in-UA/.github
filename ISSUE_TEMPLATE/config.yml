@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a vulnerability
+    url: https://github.com/Zvid-in-UA/.github/security/advisories/new
+    about: Report it privately here, never in a public issue.
+  - name: Add an idea
+    url: https://github.com/orgs/Zvid-in-UA/projects/3
+    about: An idea that is not ready to be built goes on the Backlog board as a draft.
