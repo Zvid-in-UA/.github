@@ -23,6 +23,10 @@ on:
         description: Build args, one `NAME=value` per line.
         type: string
         default: ''
+      context:
+        description: The folder holding the Dockerfile, relative to the repo root.
+        type: string
+        default: .
     secrets:
       registry-username:
         required: true
@@ -82,14 +86,15 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
-          context: .
+          context: ${{ inputs.context }}
           push: true
           provenance: false
           tags: ${{ env.IMAGE }}:latest
           labels: ${{ steps.meta.outputs.labels }}
           build-args: ${{ inputs.build-args }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # One repo can build several images, and each needs its own cache.
+          cache-from: type=gha,scope=${{ inputs.image }}
+          cache-to: type=gha,scope=${{ inputs.image }},mode=max
 
       - name: Purge old tags
         env:
